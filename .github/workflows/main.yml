@@ -47,6 +47,14 @@ jobs:
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
         asset_path: ./build/
-        asset_name: esp32c3.bin
+        asset_name: |
+          - bootloader/bootloader.bin
+          - partition_table/partition-table.bin
+          - ota_data_initial.bin
+          - wican-fw_v171_hv300.bin
+          
+          
+          
+          
         asset_content_type: application/octet-stream
 

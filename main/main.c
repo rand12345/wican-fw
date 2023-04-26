@@ -51,12 +51,12 @@
 #include "mqtt.h"
 
 #define TAG 		__func__
-#define TX_GPIO_NUM             	0
-#define RX_GPIO_NUM             	3
-#define CONNECTED_LED_GPIO_NUM		8
-#define ACTIVE_LED_GPIO_NUM			9
-#define BLE_EN_PIN_NUM				5
-#define PWR_LED_GPIO_NUM			7
+#define TX_GPIO_NUM             	6
+#define RX_GPIO_NUM             	7
+#define CONNECTED_LED_GPIO_NUM		4
+#define ACTIVE_LED_GPIO_NUM			5
+#define BLE_EN_PIN_NUM				20
+#define PWR_LED_GPIO_NUM			21
 #define GPIO_OUTPUT_PIN_SEL  ((1ULL<<CONNECTED_LED_GPIO_NUM) | (1ULL<<ACTIVE_LED_GPIO_NUM) | (1ULL<<PWR_LED_GPIO_NUM) | (1ULL<<CAN_STDBY_GPIO_NUM))
 #define BLE_EN_PIN_SEL		(1ULL<<BLE_EN_PIN_NUM)
 #define BLE_Enabled()		(!gpio_get_level(BLE_EN_PIN_NUM))

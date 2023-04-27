@@ -29,7 +29,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}-${{ env.UNIQUE_NAME }}
+        tag_name: ${{ github.ref_name }}-${{ env.UNIQUE_NAME }}
         release_name: ${{ env.UNIQUE_NAME }}
         draft: false
         prerelease: false
@@ -39,39 +39,16 @@ jobs:
         esp_idf_version: v4.4
         target: esp32c3
         path: './'
-    - name: Upload Bootloader Asset
+    - name: Zip firmware files
+      uses: montudor/action-zip@v0.1.1
+      with:
+        args: zip -j firmware.zip ./build/bootloader/bootloader.bin ./build/partition_table/partition-table.bin ./build/ota_data_initial.bin ./build/wican-fw_v171_hv300.bin
+    - name: Upload Firmware ZIP Asset
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./build/bootloader/bootloader.bin
-        asset_name: bootloader.bin
-        asset_content_type: application/octet-stream
-    - name: Upload Partition Table Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./build/partition_table/partition-table.bin
-        asset_name: partition-table.bin
-        asset_content_type: application/octet-stream
-    - name: Upload OTA Data Initial Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./build/ota_data_initial.bin
-        asset_name: ota_data_initial.bin
-        asset_content_type: application/octet-stream
-    - name: Upload Wican FW Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./build/wican-fw_v171_hv300.bin
-        asset_name: wican-fw_v171_hv300.bin
-        asset_content_type: application/octet-stream
+        asset_path: ./firmware.zip
+        asset_name: firmware.zip
+        asset_content_type: application/zip

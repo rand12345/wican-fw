@@ -11,6 +11,18 @@
 
 ---
 
+Modified to run on a M5StampC3
+
+GPIO modifiactions only.
+
+Can TX: 6
+Can RX: 7
+LEDS: 4, 5, 20, 21
+
+<br/><br/>
+
+---
+
 <p align="center">
 <img src="https://user-images.githubusercontent.com/94690098/182027614-9d580e96-2a8e-4fe3-8672-bb6a6fd616f2.png" >
 </p>

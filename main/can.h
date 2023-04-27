@@ -18,28 +18,28 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #ifndef __CAN_H__
 #define __CAN_H__
 #include "driver/twai.h"
 
-#define TX_GPIO_NUM             	6
-#define RX_GPIO_NUM             	7
-#define CAN_STDBY_GPIO_NUM			6
+#define TX_GPIO_NUM 6
+#define RX_GPIO_NUM 7
+#define CAN_STDBY_GPIO_NUM 10
 
-#define CAN_5K				0
-#define CAN_10K				1
-#define CAN_20K				2
-#define CAN_25K				3
-#define CAN_50K				4
-#define CAN_100K			5
-#define CAN_125K			6
-#define CAN_250K			7
-#define CAN_500K			8
-#define CAN_800K			9
-#define CAN_1000K			10
-#define CAN_AUTO			11
-typedef struct {
+#define CAN_5K 0
+#define CAN_10K 1
+#define CAN_20K 2
+#define CAN_25K 3
+#define CAN_50K 4
+#define CAN_100K 5
+#define CAN_125K 6
+#define CAN_250K 7
+#define CAN_500K 8
+#define CAN_800K 9
+#define CAN_1000K 10
+#define CAN_AUTO 11
+typedef struct
+{
 	uint8_t bus_state;
 	uint8_t silent;
 	uint8_t loopback;
@@ -51,8 +51,7 @@ typedef struct {
 	uint32_t filter;
 	uint32_t mask;
 	uint8_t auto_bitrate;
-}can_cfg_t;
-
+} can_cfg_t;
 
 void can_enable(void);
 void can_disable(void);

@@ -37,18 +37,18 @@ jobs:
       uses: espressif/esp-idf-ci-action@v1
       with:
         esp_idf_version: v4.4
-        target: esp32c3
+        target: esp32
         path: './'
     - name: Zip firmware files
       uses: montudor/action-zip@v0.1.1
       with:
-        args: zip -j firmware.zip ./build/bootloader/bootloader.bin ./build/partition_table/partition-table.bin ./build/ota_data_initial.bin ./build/wican-fw_v171_hv300.bin
+        args: zip -j firmware_can485.zip ./build/bootloader/bootloader.bin ./build/partition_table/partition-table.bin ./build/ota_data_initial.bin ./build/wican-fw_v171_hv300.bin
     - name: Upload Firmware ZIP Asset
       uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./firmware.zip
-        asset_name: firmware.zip
+        asset_path: ./firmware_can485.zip
+        asset_name: firmware_can485.zip
         asset_content_type: application/zip

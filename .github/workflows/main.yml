@@ -33,8 +33,6 @@ jobs:
         release_name: ${{ env.UNIQUE_NAME }}
         draft: false
         prerelease: false
-    - name: Set IDF Target
-      run: idf.py set-target esp32
     - name: esp-idf build
       uses: espressif/esp-idf-ci-action@v1
       with:

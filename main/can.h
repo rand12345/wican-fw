@@ -22,9 +22,9 @@
 #define __CAN_H__
 #include "driver/twai.h"
 
-#define TX_GPIO_NUM 6
-#define RX_GPIO_NUM 7
-#define CAN_STDBY_GPIO_NUM 10
+#define TX_GPIO_NUM 7
+#define RX_GPIO_NUM 6
+#define CAN_STDBY_GPIO_NUM 2
 
 #define CAN_5K 0
 #define CAN_10K 1
